@@ -27,15 +27,22 @@ public class Turno {
     @Column(name = "fecha_fin")
     private Date fechaFin;
 
+    @Column(name = "id_operario")
+    private long idOperario;
+
+    @Column(name = "id_piso")
+    private long idPiso;
+
+
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_operario", insertable = false, nullable = false)
+    @JoinColumn(name="id_operario", insertable = false, updatable  = false)
     private Operario operario;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_piso", insertable = false, nullable = false)
+    @JoinColumn(name="id_piso", insertable = false, updatable  = false)
     private Piso piso;
 
 

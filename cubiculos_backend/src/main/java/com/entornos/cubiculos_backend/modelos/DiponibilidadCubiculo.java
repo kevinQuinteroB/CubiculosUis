@@ -17,13 +17,18 @@ public class DiponibilidadCubiculo {
     @Column
     private long id;
 
+    @Column(name = "id_disponibilidad")
+    private long idDisponibilidad;
 
-    @JoinColumn(name = "id_disponibilidad",nullable = false,insertable = false)
+    @Column(name="id_cubiculo")
+    private long idCubiculo;
+
+    @JoinColumn(name = "id_disponibilidad",insertable = false,updatable = false)
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Disponibilidad disponibilidad;
 
-    @JoinColumn(name = "id_cubiculo",nullable = false,insertable = false)
+    @JoinColumn(name = "id_cubiculo",insertable = false,updatable = false)
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Cubiculo cubiculo;

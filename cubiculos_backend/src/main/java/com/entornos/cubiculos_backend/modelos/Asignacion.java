@@ -25,22 +25,30 @@ public class Asignacion {
     @Column(name = "fecha_fin")
     private Date fechaFin;
 
+    @Column(name = "id_estudiante")
+    private long idEstudiante;
+
+    @Column(name = "id_cubiculo")
+    private long idCubiculo;
+
+    @Column(name = "id_operario")
+    private long idOperario;
 
 
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_estudiante",nullable = false,insertable = false)
+    @JoinColumn(name = "id_estudiante",insertable = false,updatable = false)
     private Estudiante estudiante;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cubiculo",nullable = false,insertable = false)
+    @JoinColumn(name = "id_cubiculo",insertable = false,updatable = false)
     private Cubiculo cubiculo;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_operario", insertable = false, nullable = false)
+    @JoinColumn(name="id_operario", insertable = false, updatable = false)
     private Operario operario;
 
 
