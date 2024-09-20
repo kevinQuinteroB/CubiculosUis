@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "operario")
+@Table(name = "disponibilidad")
 public class Disponibilidad {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
