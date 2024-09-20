@@ -5,21 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "disponibilidad")
-public class Disponibilidad {
+@Table(name = "estado_estudiante")
+public class EstadoEstudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private long id;
 
-    @Column(name = "fecha", nullable = false)
-    private Date fecha;
-    @Column(name = "estado",nullable = false)
-    private int estado;
+    @Column(name = "nombre_estado")
+    private String nombreEstado;
 }

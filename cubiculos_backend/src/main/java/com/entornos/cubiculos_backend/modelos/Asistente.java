@@ -6,50 +6,29 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "asignacion")
-public class Asignacion {
+@Table(name = "asistente")
+public class Asistente {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private long id;
 
-    @Column(name = "fecha_inicio")
-    private Date fechaInicio;
-
-    @Column(name = "fecha_fin")
-    private Date fechaFin;
+    @Column(name = "id_reserva")
+    private long idReserva;
 
     @Column(name = "id_estudiante")
     private long idEstudiante;
-
-    @Column(name = "id_cubiculo")
-    private long idCubiculo;
-
-    @Column(name = "id_operario")
-    private long idOperario;
-
-
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_estudiante",insertable = false,updatable = false)
     private Estudiante estudiante;
 
+    @JoinColumn(name = "id_reserva",insertable = false,updatable = false)
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cubiculo",insertable = false,updatable = false)
-    private Cubiculo cubiculo;
-
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_operario", insertable = false, updatable = false)
-    private Operario operario;
-
-
+    private Reserva reserva;
 }

@@ -1,6 +1,7 @@
 package com.entornos.cubiculos_backend.modelos;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,13 @@ public class Estudiante {
     @Column(name = "codigo")
     private int codigo;
 
-    @Column(name="estado")
-    private int estado;
+    @Column(name="id_estado_estudiante")
+    private long idEstado;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_estado_estudiante",insertable = false,updatable = false)
+    private EstadoEstudiante estadoEstudiante;
 
 
 }
