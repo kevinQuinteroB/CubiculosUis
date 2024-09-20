@@ -14,7 +14,11 @@ import lombok.Setter;
 public class Cubiculo {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO)
+    @Column
     private long id;
+
+    @Column(name="numero_cubiculo")
+    private String numeroCubiculo;
 
     @Column(name="capacidad")
     private int capacidad;
@@ -22,6 +26,8 @@ public class Cubiculo {
     @Column(name="id_piso")
     private long idPiso;
 
+    @Column(name="descripcion")
+    private String descripcion;
 
     @JoinColumn(name ="id_piso",insertable = false,updatable = false)
     @JsonIgnore
