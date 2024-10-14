@@ -87,6 +87,8 @@ h4{
     border-radius: 0;
     color: aliceblue;
     justify-content: center;
+    font-family: 'Source Sans 3';
+    font-weight: 600;
 }
 
 .botones:focus{
