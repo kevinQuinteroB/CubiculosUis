@@ -73,3 +73,26 @@ table th {
 .actions button {
     margin: 0 5px;
 }
+
+.enlaces {
+    position: relative;
+    margin-top: 5px;
+    width: 50%;
+    height: 15px;
+}
+
+.redireccion {
+    margin-top: 15px;
+    position: absolute;
+    display: flex;
+    right: 0;
+    bottom: 0;
+}
+
+.redireccion2 {
+    margin-top: 15px;
+    position: absolute;
+    display: flex;
+    left: 0;
+    bottom: 0;
+}
