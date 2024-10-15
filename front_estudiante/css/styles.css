@@ -96,3 +96,7 @@ table th {
     left: 0;
     bottom: 0;
 }
+
+select {
+    margin-bottom: 15px;
+}

@@ -21,16 +21,20 @@ public class Cubiculo {
     private String numeroCubiculo;
 
     @Column(name="capacidad")
-    private int capacidad;
+    private Integer capacidad;
 
     @Column(name="id_piso")
-    private long idPiso;
+    private Long idPiso;
 
     @Column(name="descripcion")
     private String descripcion;
+
+    @Column(name="id_estado_cubiculo")
+    private Long idEstadoCubiculo;
 
     @JoinColumn(name ="id_piso",insertable = false,updatable = false)
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Piso piso;
+
 }
