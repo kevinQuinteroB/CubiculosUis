@@ -6,12 +6,10 @@ import com.entornos.cubiculos_backend.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/auth")
 public class UsuarioController {
     @Autowired
@@ -21,7 +19,7 @@ public class UsuarioController {
     public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario) {
         return ResponseEntity.ok(this.usuarioService.CrearUsuario(usuario));
     }
-
+    @CrossOrigin(origins = "*")
     @PostMapping("/login")
     public ResponseEntity<Boolean> login(@RequestBody LoginRequest loginRequest) {
         boolean isAuthenticated = usuarioService.login(loginRequest.getEmail(), loginRequest.getContrasenia());
