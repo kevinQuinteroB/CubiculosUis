@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/operario")
 @CrossOrigin(origins = "*")
+@RequestMapping("/operario")
 public class OperarioController {
     @Autowired
     private OperarioService operarioService;
