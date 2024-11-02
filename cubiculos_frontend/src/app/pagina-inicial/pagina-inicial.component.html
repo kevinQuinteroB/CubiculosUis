@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Biblioteca Uis</title>
-</head>
-<body>
+
+<div class="body">
     <div class="fondo">
         <div>
-            <img class="logoUIS" src="/assets/images.png">
+            <img class="logoUIS" src="/assets/login/images.png">
         </div>
         <div class="caja-registro">
             <h2 class="user-select-none">Bienveidos</h2>
@@ -16,10 +11,9 @@
                 <input class="ingresarInformacion" type="email">
                 <input class="ingresarInformacion" type="password">
             </form>
-            <button class="botones btn">Ingresar</button>
+            <button class="botones btn" [routerLink]="['/piso']">Ingresar</button>
             <a class="recuperarContrasena" href="https://www.google.com">Olvidates la contraseña</a>
             <button class="botones btn">Biblioteca UIS</button>
         </div>
     </div>
-</body>
-</html>
+</div>

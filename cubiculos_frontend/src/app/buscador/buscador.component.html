@@ -1,0 +1,51 @@
+<div class="body">
+    <!-- BARRA NAV -->
+    <nav class="navbar">
+        <div class="logoUis">
+            <a class="navbar-brand" href="https://uis.edu.co/">
+                <img src="../assets/buscador/Universidad_Industrial_de_Santander_logo.svg.png" alt="Logo Uis">
+            </a>
+            <h6 class="nombre">
+                NOMBRE ESTUDIANTE
+            </h6>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO CENTRAL -->
+
+    <div class="contenido">
+        <div class="buscador">
+            <h3 class="titulo">BUSCA TU CUBICULO</h3>
+            <div class="inputs">
+                <div class="col-md-4">
+                    <label for="horaInicio" class="labelBuscador">Hora inicio</label>
+                    <select id="horaInicio" class="form-select">
+                        <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="horaFin" class="labelBuscador">Hora fin</label>
+                    <select id="horaFin" class="form-select">
+                        <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="fecha" class="labelBuscador">Fecha</label>
+                    <select id="fecha" class="form-select">
+                        <option *ngFor="let fecha of fechas" [value]="fecha">{{ fecha }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="capacidad" class="labelBuscador">Capacidad</label>
+                    <select id="capacidad" class="form-select">
+                        <option *ngFor="let capacidad of capacidad" [value]="capacidad">{{ capacidad }}</option>
+                    </select>
+                </div>
+                <a class="buscar">
+                    <img class="buscar" src="../assets/buscador/image.png" alt="buscar...">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>

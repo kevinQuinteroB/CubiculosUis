@@ -1,0 +1,120 @@
+/*
+    Pagina
+*/
+
+.body {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+/*
+    NAV
+*/
+
+.navbar{
+    position: relative;
+    display: flex;
+    min-width: 100vw;
+}
+
+.logoUis{
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 5px;
+    justify-content: space-between;
+    width: 100%;
+}
+.logoUis  a img{
+    max-width: 100px;
+}
+
+.nombre{
+    display: flex;
+    position: relative;
+    height: 100%;
+    margin-right: 15px;
+    font-family: 'Hum521LI';
+    font-weight: 900;
+}
+
+/*
+    Contenido centro
+*/
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+/*
+    Buscador
+*/
+
+.buscador{
+    background-color: rgb(108, 185, 62);
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 1px solid black ;
+    padding: 20px;
+    width:600px;
+    margin: 0 auto;
+    font-family: 'Hum521l';
+    
+    
+}
+.titulo{
+    font-size: 35px;
+    color: aliceblue;
+    font-family: 'Hum521c';
+    font-weight: 900;
+}
+.inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    gap: 10px;
+    justify-content: center; 
+}
+.col-md-4 {
+    flex: 1 1 45%; 
+    min-width: 100px; 
+    max-width: 150px; 
+}
+
+.buscar{
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+}
+
+.col-md-4{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1px 5px 1px 5px;
+    background-color: aliceblue;
+}
+
+.form-select{
+    border: 0;
+    padding: 0.5px 0 0 0;
+    width: 100%;
+    background-color: transparent;
+}
+.form-select:focus{
+    outline: none; 
+    border: none;
+    box-shadow: none;
+}
+
+.labelBuscador{
+    color: gray;
+}
