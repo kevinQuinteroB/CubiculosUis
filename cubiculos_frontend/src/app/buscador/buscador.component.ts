@@ -25,7 +25,7 @@ export class BuscadorComponent {
 
   generarHoras() {
     for (let i = 8; i <= 18; i++) {
-      const hora = i <= 12 ? `${i}AM` : `${i - 12}PM`;
+      const hora = i <= 12 ? `${i}:00 AM` : `${i - 12}:00 PM`;
       this.horas.push(hora);
     }
   }

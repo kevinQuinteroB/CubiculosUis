@@ -41,9 +41,43 @@
                         <option *ngFor="let capacidad of capacidad" [value]="capacidad">{{ capacidad }}</option>
                     </select>
                 </div>
-                <a class="buscar">
+                <a>
                     <img class="buscar" src="../assets/buscador/image.png" alt="buscar...">
                 </a>
+            </div>
+        </div>
+
+        <!-- RESULTADOS DEL BUSCADOR-->
+
+        <div>
+            <div class="resultadoBuscador">
+                <img class="imgCubiculo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs3ssDTecHc5pQFalZ_XcTRu-thpN-kAcGmw&s">
+                <div class="informacionResultado">
+
+                    <h4 class="tituloCubiculo">303</h4>
+
+                    <div class="infoCapacidad">
+                        <span class="CapacidadCubiculo">Capacidad maxima:</span><span class="detalles"> 3
+                            personas</span>
+                    </div>
+
+                    <p class="detalles"> DESCRIPCION DEL CUBICULO</p>
+
+                    <div class="botones">
+                        <div class="selectorBoton">
+                            <select id="horaInicioCubiculo" class="form-select horaSeleccion">
+                                <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+                            </select>
+                        </div>
+                        <div class="selectorBoton">
+                            <select id="horaFinCubiculo" class="form-select horaSeleccion">
+                                <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn selectorBoton">RESERVAR</button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
