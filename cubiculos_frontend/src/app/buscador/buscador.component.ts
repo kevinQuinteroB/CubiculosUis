@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ModalConfirmacionReservaComponent } from '../modal-confirmacion-reserva/modal-confirmacion-reserva.component';
 
 @Component({
   selector: 'app-buscador',
@@ -6,9 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './buscador.component.css'
 })
 export class BuscadorComponent {
+
+  @ViewChild(ModalConfirmacionReservaComponent) ModalConfirmacionReservaComponent!: ModalConfirmacionReservaComponent;
+
   horas: string[] = [];
   capacidad: number[] = [];
   fechas: string[] = [];
+
+  capacidadSeleccionada: number = 3;
 
   constructor() {
     this.generarHoras();
@@ -36,5 +42,10 @@ export class BuscadorComponent {
       fecha.setDate(hoy.getDate() + i);
       this.fechas.push(fecha.toLocaleDateString()); // Ajusta el formato si es necesario
     }
+  }
+
+  openModal() {
+    this.ModalConfirmacionReservaComponent.open();  // Abre el modal
+    this.ModalConfirmacionReservaComponent.setCapacidad(this.capacidadSeleccionada);
   }
 }

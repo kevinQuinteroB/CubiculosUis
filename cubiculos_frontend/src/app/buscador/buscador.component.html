@@ -57,8 +57,7 @@
                     <h4 class="tituloCubiculo">303</h4>
 
                     <div class="infoCapacidad">
-                        <span class="CapacidadCubiculo">Capacidad maxima:</span><span class="detalles"> 3
-                            personas</span>
+                        <span class="CapacidadCubiculo">Capacidad maxima:</span><span class="detalles"> 3 personas</span>
                     </div>
 
                     <p class="detalles"> DESCRIPCION DEL CUBICULO</p>
@@ -74,12 +73,13 @@
                                 <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
                             </select>
                         </div>
-                        <button type="button" class="btn selectorBoton">RESERVAR</button>
+                        <button type="button" class="btn selectorBoton" (click)="openModal()">RESERVAR</button>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-
+    
 </div>
+<app-modal-confirmacion-reserva></app-modal-confirmacion-reserva>

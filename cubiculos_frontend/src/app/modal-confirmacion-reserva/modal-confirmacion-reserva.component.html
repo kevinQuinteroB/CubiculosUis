@@ -1,0 +1,42 @@
+<div class="modal-overlay" *ngIf="isVisible">
+  <div class="modal-content">
+    <h2>CONFIRMA TU RESERVA</h2>
+    <p>Lista de asistentes</p>
+
+    <div *ngFor="let _ of [].constructor(cantidadAsistentes); let i = index" class="input-group mb-3">
+      <input type="number" class="form-control" placeholder="codigo" aria-label="codigo">
+      <span class="input-group-text">-</span>
+      <input type="text" class="form-control" placeholder="nombre" aria-label="nombre">
+    </div>
+
+    <p>Detalles</p>
+
+    <h4 class="tituloCubiculo">Cubiculo 303</h4>
+
+    <div class="infoCapacidad">
+      <span class="CapacidadCubiculo">Capacidad maxima:</span><span class="detalles"> 3 personas</span>
+    </div>
+    <div class="detallesCubiculos">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="terminos">
+        <label class="form-check-label" for="terminos">
+          Terminos y condiciones
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="compromiso">
+        <label class="form-check-label" for="compromiso">
+          Me comprometo a cumplir las normas y guardar la integridad de todo el material brindado por la universidad
+        </label>
+      </div>
+    </div>
+
+
+    <div class="modal-actions">
+      <button type="button" class="btn selectorBoton" (click)="close()">Cancelar</button>
+      <button type="button" class="btn selectorBoton" (click)="confirm()">Confirmar Reserva</button>
+    </div>
+
+  </div>
+</div>

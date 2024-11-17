@@ -1,0 +1,55 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    position: relative;
+    display: flex;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 85%;
+    text-align: center;
+  }
+  
+  .modal-actions button {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .modal-actions button:first-child {
+    background-color: #ccc;
+  }
+  
+  .modal-actions button:last-child {
+    background-color: rgb(108, 185, 62);
+    color: white;
+  }
+
+  .detallesCubiculos{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: left;
+    align-items:start;
+    text-align:left;
+  }
+
+  .tituloCubiculo{
+    font-family: 'Hum521c';
+    font-weight: 900;
+    color: rgb(108, 185, 62);
+    margin: 0;
+}
+  
