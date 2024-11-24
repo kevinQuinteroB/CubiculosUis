@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface CubiculoRepository extends JpaRepository<Cubiculo, Long> {
+public interface ICubiculoRepository extends JpaRepository<Cubiculo, Long> {
     Optional<Cubiculo> findByNumeroCubiculo(String numeroCubiculo);
 
     @Query("SELECT c FROM Cubiculo c WHERE (:idPiso IS NULL OR c.piso.id = :idPiso) " +
