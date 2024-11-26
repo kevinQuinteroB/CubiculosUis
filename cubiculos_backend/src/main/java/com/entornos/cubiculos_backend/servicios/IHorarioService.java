@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public interface IHorarioService {
 
-    void generarHorarioPorCubiculoParaDiaSiguiente();
+    void generarHorariosParaProximosDiasHabiles();
 
-    void generarHorariosBase();
+    void crearHorariosParaDia(LocalDateTime diaACrear);
 
     public List<List<Horario>> consultaPrincipalHorarios(LocalDate fecha, LocalDateTime horaInicio, LocalDateTime horaFin, Long capacidad);
 

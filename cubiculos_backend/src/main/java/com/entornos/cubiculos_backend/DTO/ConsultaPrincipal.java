@@ -11,5 +11,6 @@ public class ConsultaPrincipal {
     private String numeroCubiculo;
     private Integer capacidad;
     private String descripcion;
-    private List<LocalDateTime> horarios;
+    private LocalDateTime fechaHoraInicio;
+    private LocalDateTime fechaHoraFin;
 }

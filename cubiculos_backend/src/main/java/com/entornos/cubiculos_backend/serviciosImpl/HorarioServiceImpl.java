@@ -5,7 +5,9 @@ import com.entornos.cubiculos_backend.modelos.Horario;
 import com.entornos.cubiculos_backend.repositorios.ICubiculoRepository;
 import com.entornos.cubiculos_backend.repositorios.IHorarioRepository;
 import com.entornos.cubiculos_backend.servicios.IHorarioService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -22,50 +24,40 @@ public class HorarioServiceImpl implements IHorarioService {
     private ICubiculoRepository cubiculoRepository;
 
     final int horaApertura = 8;
-    final int horaCierre = 18;
-    private int diasSiguientes = 2;
+    final int horaCierre = 19;
+    private int randoDeDias = 3;
 
-    @Override
-    @Scheduled(cron = "0 25 10 * * *")
-    public void generarHorarioPorCubiculoParaDiaSiguiente() {
-
-        // Verificamos que los horarios base ya existan para hoy y mañana
-        if (horarioRepository.findAllByFecha(LocalDate.now()).isEmpty() ||
-                horarioRepository.findAllByFecha(LocalDate.now().plusDays(1)).isEmpty()) {
-            if(LocalDate.now().plusDays(1).getDayOfWeek().getValue() == 6){
-                generarHorariosBase();
-            }
-        }
-
-        //Definimos el dia para el cual se crearan los horarios
-        LocalDateTime diaACrear = LocalDateTime.now().plusDays(diasSiguientes);
-        //Si es jueves o viernes, se agregan dias para no crear el fin de semana
-        if(LocalDate.now().getDayOfWeek().getValue() == 4 || LocalDate.now().getDayOfWeek().getValue() == 5){
-            diaACrear = diaACrear.plusDays(2);
-        }
-
-        // generar horarios para cada cubiculo
-        generarHorarioParaDia(diaACrear);
-
+    //Para que cada que se inicie la aplicacion revise que esten los horarios correctamente generados
+    @PostConstruct
+    public void init() {
+        generarHorariosParaProximosDiasHabiles();
     }
 
     @Override
-    public void generarHorariosBase() {
+    @Scheduled(cron = "0 01 00 * * *")
+    public void generarHorariosParaProximosDiasHabiles() {
 
-        //funcion para generar horarios base (horarios de hoy y mañana)
-        for(int j=0; j<2; j++) {
-
+        for (int j = 0; j < this.randoDeDias; j++) {
             LocalDateTime diaACrear = LocalDateTime.now().plusDays(j);
-            if(LocalDate.now().getDayOfWeek().getValue() == 6){
+            // Si es sabado y domingo se ajusta al siguiente día
+            if (diaACrear.getDayOfWeek().getValue() == 6) {
                 diaACrear = diaACrear.plusDays(2);
+            } else if (diaACrear.getDayOfWeek().getValue() == 7) {
+                diaACrear = diaACrear.plusDays(1);
             }
-            // Crear horarios para cada cubiculo
-            generarHorarioParaDia(diaACrear);
+            // Comprueba que sea un día entre semana (Lunes a viernes)
+            if (diaACrear.getDayOfWeek().getValue() >= 1 && diaACrear.getDayOfWeek().getValue() <= 5) {
+                // Verfica si los horarios ya existen, si no existen los crea
+                if (horarioRepository.findAllByFecha(diaACrear.toLocalDate()).isEmpty()) {
+                    this.crearHorariosParaDia(diaACrear);
+                }
+            }
         }
 
     }
 
-    public void generarHorarioParaDia(LocalDateTime diaACrear) {
+    @Override
+    public void crearHorariosParaDia(LocalDateTime diaACrear) {
 
         List<Cubiculo> cubiculos = cubiculoRepository.findAll();
 

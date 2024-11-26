@@ -39,9 +39,8 @@ public class HorarioController {
             consultaPrincipal.setNumeroCubiculo(horarios.get(0).getCubiculo().getNumeroCubiculo());
             consultaPrincipal.setCapacidad(horarios.get(0).getCubiculo().getCapacidad());
             consultaPrincipal.setDescripcion(horarios.get(0).getCubiculo().getDescripcion());
-            List<LocalDateTime> horariosDisponibles = new ArrayList<>();
-            horarios.forEach(horario -> horariosDisponibles.add(horario.getFecha()));
-            consultaPrincipal.setHorarios(horariosDisponibles);
+            consultaPrincipal.setFechaHoraInicio(horarios.get(0).getFecha());
+            consultaPrincipal.setFechaHoraFin(horarios.get(horarios.size()-1).getFecha().plusHours(1));
             cubiculosConDisponibilidad.add(consultaPrincipal);
         });
 
