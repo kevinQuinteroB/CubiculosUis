@@ -14,6 +14,6 @@ public interface IHorarioService {
 
     void crearHorariosParaDia(LocalDateTime diaACrear);
 
-    public List<List<Horario>> consultaPrincipalHorarios(LocalDate fecha, LocalDateTime horaInicio, LocalDateTime horaFin, Long capacidad);
+    List<List<Horario>> consultaPrincipalHorarios(LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin, Long capacidad);
 
 }

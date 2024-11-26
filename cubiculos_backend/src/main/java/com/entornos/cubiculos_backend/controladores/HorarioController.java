@@ -24,12 +24,11 @@ public class HorarioController {
     private IHorarioService horarioService;
 
     @GetMapping("/consultaPrincipal")
-    public ResponseEntity<List<ConsultaPrincipal>> consultaPrincipal(@RequestParam LocalDate fecha,
-                                                                     @RequestParam(required = false) LocalDateTime fechaHoraInicio,
-                                                                     @RequestParam(required = false) LocalDateTime fechaHoraFin,
-                                                                     @RequestParam(required = false) Long capacidad){
+    public ResponseEntity<List<ConsultaPrincipal>> consultaPrincipal(@RequestParam LocalDateTime fechaHoraInicio,
+                                                                     @RequestParam LocalDateTime fechaHoraFin,
+                                                                     @RequestParam Long capacidad){
 
-        List<List<Horario>> horariosPorCubiculo = horarioService.consultaPrincipalHorarios(fecha, fechaHoraInicio, fechaHoraFin, capacidad);
+        List<List<Horario>> horariosPorCubiculo = horarioService.consultaPrincipalHorarios(fechaHoraInicio, fechaHoraFin, capacidad);
         List<ConsultaPrincipal> cubiculosConDisponibilidad = new ArrayList<>();
 
         //Convertimos la lista de horarios por cubiculo en una lista de objetos ConsultaPrincipal para el front

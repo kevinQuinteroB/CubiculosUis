@@ -1,5 +1,6 @@
 package com.entornos.cubiculos_backend.serviciosImpl;
 
+import com.entornos.cubiculos_backend.exepciones.BadRequestException;
 import com.entornos.cubiculos_backend.modelos.Cubiculo;
 import com.entornos.cubiculos_backend.modelos.Horario;
 import com.entornos.cubiculos_backend.repositorios.ICubiculoRepository;
@@ -7,14 +8,13 @@ import com.entornos.cubiculos_backend.repositorios.IHorarioRepository;
 import com.entornos.cubiculos_backend.servicios.IHorarioService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +25,8 @@ public class HorarioServiceImpl implements IHorarioService {
 
     final int horaApertura = 8;
     final int horaCierre = 19;
-    private int randoDeDias = 3;
+    private int rangoDeDias = 3;
+    private int rangoDeHoras = 2;
 
     //Para que cada que se inicie la aplicacion revise que esten los horarios correctamente generados
     @PostConstruct
@@ -36,8 +37,8 @@ public class HorarioServiceImpl implements IHorarioService {
     @Override
     @Scheduled(cron = "0 01 00 * * *")
     public void generarHorariosParaProximosDiasHabiles() {
-
-        for (int j = 0; j < this.randoDeDias; j++) {
+        int diasModificados = 0;
+        for (int j = 0; j < this.rangoDeDias; j++) {
             LocalDateTime diaACrear = LocalDateTime.now().plusDays(j);
             // Si es sabado y domingo se ajusta al siguiente día
             if (diaACrear.getDayOfWeek().getValue() == 6) {
@@ -50,10 +51,16 @@ public class HorarioServiceImpl implements IHorarioService {
                 // Verfica si los horarios ya existen, si no existen los crea
                 if (horarioRepository.findAllByFecha(diaACrear.toLocalDate()).isEmpty()) {
                     this.crearHorariosParaDia(diaACrear);
+                    diasModificados++;
+                    Logger.getGlobal().info("Se generaron los horarios para el día: " + diaACrear.toLocalDate());
                 }
             }
         }
-
+        if (diasModificados > 0) {
+            Logger.getGlobal().info("En total se generaron los horarios para " + diasModificados + " días");
+        }else{
+            Logger.getGlobal().info("NO FUE NECESARIO GENERAR NUEVOS HORARIOS PARA LOS CUBICULOS");
+        }
     }
 
     @Override
@@ -78,9 +85,14 @@ public class HorarioServiceImpl implements IHorarioService {
     }
 
     @Override
-    public List<List<Horario>> consultaPrincipalHorarios(LocalDate fecha, LocalDateTime horaInicio, LocalDateTime horaFin, Long capacidad) {
+    public List<List<Horario>> consultaPrincipalHorarios(LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin, Long capacidad) {
+
+        if((fechaHoraFin.getHour() - fechaHoraInicio.getHour()) > rangoDeHoras){
+            throw new BadRequestException("El rango entre la hora de inicio y la hora de fin no puede ser mayor a " + rangoDeHoras);
+        }
+
         //Consulta principal de horarios
-        List<Horario> horariosDisponibles = horarioRepository.buscadorPrincipal(fecha, horaInicio, horaFin, capacidad);
+        List<Horario> horariosDisponibles = horarioRepository.buscadorPrincipal(fechaHoraInicio, fechaHoraFin, capacidad);
         List<List<Horario>> horariosPorCubiculo = new ArrayList<>();
         horariosDisponibles.stream()
                 .collect(Collectors.groupingBy(horario -> horario.getCubiculo().getId()))

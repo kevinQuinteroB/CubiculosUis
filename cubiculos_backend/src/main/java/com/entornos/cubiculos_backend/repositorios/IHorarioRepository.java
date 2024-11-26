@@ -19,13 +19,11 @@ public interface IHorarioRepository extends JpaRepository<Horario, Long> {
     @Query("SELECT h FROM Horario h " +
             "JOIN Cubiculo c ON h.idCubiculo = c.id " +
             "WHERE h.idReserva IS NULL " +
-            "AND DATE(h.fecha) = :fechaDia " +
             "AND (h.fecha >= :fechaHoraInicio) " +
             "AND ( h.fecha < :fechaHoraFin) " +
             "AND ( c.capacidad = :capacidad) "
     )
-    List<Horario> buscadorPrincipal(@Param("fechaDia")LocalDate fechaDia,
-                                          @Param("fechaHoraInicio") LocalDateTime fechaHoraInicio,
+    List<Horario> buscadorPrincipal(    @Param("fechaHoraInicio") LocalDateTime fechaHoraInicio,
                                           @Param("fechaHoraFin") LocalDateTime fechaHoraFin,
                                           @Param("capacidad") Long capacidad
     );
