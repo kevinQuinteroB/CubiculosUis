@@ -16,16 +16,14 @@ public class Asistente {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "id_reserva")
+    @JsonIgnore
+    @Column(name = "id_reserva", nullable = true)
     private long idReserva;
 
-    @Column(name = "id_estudiante")
-    private long idEstudiante;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_estudiante",insertable = false,updatable = false)
-    private Estudiante estudiante;
+    @Column(name="codigo_estudiante")
+    private long codigo;
+
 
     @JoinColumn(name = "id_reserva",insertable = false,updatable = false)
     @JsonIgnore

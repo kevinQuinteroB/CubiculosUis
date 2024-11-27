@@ -100,6 +100,30 @@ public class HorarioServiceImpl implements IHorarioService {
         return horariosPorCubiculo;
     }
 
+    @Override
+    public boolean validarDiponibilidadHoraria(Long idCubiculo, LocalDateTime fechaInicio, LocalDateTime fechaFin){
+        List<Horario> horarios=this.horarioRepository.buscarHorarioPorCubiculo(fechaInicio,fechaFin,idCubiculo);
+        for (Horario horario:horarios){
+            if (horario.getIdReserva()!=null){
+                return false;
+            }
+        }
+        return true;
+    }
+    public void vincularHorarioReserva(Long idCubiculo,Long idReserva, LocalDateTime fechaInicio, LocalDateTime fechaFin){
+        List<Horario> horarios = new ArrayList<>();
+        if (fechaInicio.isEqual(fechaFin)){
+            horarios=this.horarioRepository.buscarHorarioPorCubiculoUna(fechaInicio,idCubiculo);
+        }else{
+            horarios=this.horarioRepository.buscarHorarioPorCubiculo(fechaInicio,fechaFin,idCubiculo);
+        }
+        for (Horario horario:horarios){
+
+            horario.setIdReserva(idReserva);
+            this.horarioRepository.save(horario);
+
+        }
+    }
     @Autowired
     public void setHorarioRepository(IHorarioRepository horarioRepository) {
         this.horarioRepository = horarioRepository;

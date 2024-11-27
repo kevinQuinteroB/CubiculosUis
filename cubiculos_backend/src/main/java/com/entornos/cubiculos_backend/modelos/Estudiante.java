@@ -2,6 +2,7 @@ package com.entornos.cubiculos_backend.modelos;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,11 @@ public class Estudiante {
 
     @Column(name="id_estado_estudiante")
     private long idEstado;
+
+    @JsonIgnore
+    @Column(name = "horas_disp", nullable = false, columnDefinition = "integer default 2")
+    private int horasDisp = 2;
+
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

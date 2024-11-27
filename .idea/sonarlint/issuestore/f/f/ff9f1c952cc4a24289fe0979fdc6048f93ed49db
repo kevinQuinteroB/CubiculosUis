@@ -1,0 +1,8 @@
+
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§–Ñ8ÃÒ¬÷¶2J$9f0e44a7-7da3-4653-b7e9-40baf9165b9b
+“
+java:S3655K"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(ÁíÂ8ÅÒ¬÷¶2J$4707bd7a-5494-42a1-bdab-1d863d78a229
+„
+java:S1126E"AReplace this if-then-else statement by a single return statement.(ÚÙö‰8ÍÒ¬÷¶2J$d9cc9059-002e-40a5-af8d-e5eff0c20a67
+‰
+java:S1126L"AReplace this if-then-else statement by a single return statement.(Å‡Áóøÿÿÿÿ8ÍÒ¬÷¶2J$de3989fc-508f-4086-9913-738113f7a66e

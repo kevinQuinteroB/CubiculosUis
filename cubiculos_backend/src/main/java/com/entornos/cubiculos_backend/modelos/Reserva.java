@@ -23,8 +23,9 @@ public class Reserva {
     private long idEstudiante;
 
 
-    @Column(name = "id_operario")
-    private long idOperario;
+
+    @Column(name = "id_operario", nullable = true)
+    private Long idOperario;
 
     @Column(name = "id_estado_reserva")
     private long idEstadoReserva;
