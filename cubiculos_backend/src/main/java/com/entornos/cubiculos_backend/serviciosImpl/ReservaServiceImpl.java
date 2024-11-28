@@ -27,8 +27,12 @@ public class ReservaServiceImpl implements IReservaService {
 
     @Override
     @Transactional
-    public Reserva createReserva(Long idCubiculo, Long idEstudiante, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin, List<Asistente> asistentes) {
+    public Reserva createReserva(Long idCubiculo, Long idEstudiante, LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFinfront, List<Asistente> asistentes) {
 
+        LocalDateTime fechaHoraFin = fechaHoraFinfront.minusHours(1);
+        if(fechaHoraFin.isBefore(fechaHoraInicio)) {
+            throw new ValidationException("Fecha y hora fin no es valida");
+        }
         int horas=0;
 
         //validaciones

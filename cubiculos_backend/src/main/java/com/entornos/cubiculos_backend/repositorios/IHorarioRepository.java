@@ -32,7 +32,7 @@ public interface IHorarioRepository extends JpaRepository<Horario, Long> {
     @Query("SELECT h FROM Horario h " +
             "WHERE h.idCubiculo = :idCubiculo " +
             "AND  h.fecha >= :fechaHoraInicio " +
-            "AND  h.fecha < :fechaHoraFin "
+            "AND  h.fecha < :fechaHoraFin"
     )
     List<Horario> buscarHorarioPorCubiculo( @Param("fechaHoraInicio") LocalDateTime fechaHoraInicio,
                                             @Param("fechaHoraFin") LocalDateTime fechaHoraFin,
