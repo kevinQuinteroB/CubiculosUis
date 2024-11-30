@@ -18,30 +18,30 @@
             <h3 class="titulo">BUSCA TU CUBICULO</h3>
             <div class="inputs">
                 <div class="col-md-4">
+                    <label for="fecha" class="labelBuscador">Fecha</label>
+                    <select id="fecha" class="form-select" [(ngModel)]="fecha" (ngModelChange)="onFechaChange()">
+                        <option *ngFor="let fecha of fechas">{{ fecha }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
                     <label for="horaInicio" class="labelBuscador">Hora inicio</label>
-                    <select id="horaInicio" class="form-select">
-                        <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+                    <select id="horaInicio" class="form-select" (ngModelChange)="actualizarHorasFin()" [(ngModel)]="horaInicio">
+                        <option *ngFor="let hora of horas">{{ hora }}</option>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <label for="horaFin" class="labelBuscador">Hora fin</label>
-                    <select id="horaFin" class="form-select">
-                        <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
+                    <select id="horaFin" class="form-select" [(ngModel)]="horaFin">
+                        <option *ngFor="let hora of horasFinal">{{ hora }}</option>
                     </select>
-                </div>
-                <div class="col-md-4">
-                    <label for="fecha" class="labelBuscador">Fecha</label>
-                    <select id="fecha" class="form-select">
-                        <option *ngFor="let fecha of fechas" [value]="fecha">{{ fecha }}</option>
-                    </select>
-                </div>
+                </div>                           
                 <div class="col-md-4">
                     <label for="capacidad" class="labelBuscador">Capacidad</label>
-                    <select id="capacidad" class="form-select">
-                        <option *ngFor="let capacidad of capacidad" [value]="capacidad">{{ capacidad }}</option>
+                    <select id="capacidad" class="form-select" [(ngModel)]="capacidadSeleccionada">
+                        <option *ngFor="let item of capacidad">{{ item }}</option>
                     </select>
                 </div>
-                <a>
+                <a (click)="buscarCubiculos()">
                     <img class="buscar" src="../assets/buscador/image.png" alt="buscar...">
                 </a>
             </div>
@@ -49,37 +49,38 @@
 
         <!-- RESULTADOS DEL BUSCADOR-->
 
-        <div>
+        <ng-container *ngFor="let cubiculo of consulta">
             <div class="resultadoBuscador">
                 <img class="imgCubiculo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs3ssDTecHc5pQFalZ_XcTRu-thpN-kAcGmw&s">
                 <div class="informacionResultado">
 
-                    <h4 class="tituloCubiculo">303</h4>
+                    <h4 class="tituloCubiculo">{{cubiculo.idCubiculo}}</h4>
 
                     <div class="infoCapacidad">
-                        <span class="CapacidadCubiculo">Capacidad maxima:</span><span class="detalles"> 3 personas</span>
+                        <span class="CapacidadCubiculo">Capacidad maxima:</span><span class="detalles">{{cubiculo.capacidad}}</span><span class="detalles">-personas</span>
                     </div>
 
-                    <p class="detalles"> DESCRIPCION DEL CUBICULO</p>
+                    <p class="detalles">{{cubiculo.descripcion}}</p>
 
                     <div class="botones">
                         <div class="selectorBoton">
-                            <select id="horaInicioCubiculo" class="form-select horaSeleccion">
-                                <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
-                            </select>
+                            <div class="horaSeleccion">
+                                {{formatHora(cubiculo.fechaHoraInicio)}}
+                            </div>
                         </div>
                         <div class="selectorBoton">
-                            <select id="horaFinCubiculo" class="form-select horaSeleccion">
-                                <option *ngFor="let hora of horas" [value]="hora">{{ hora }}</option>
-                            </select>
+                            <div class=" horaSeleccion">
+                                {{formatHora(cubiculo.fechaHoraFin)}}
+                            </div>
                         </div>
                         <button type="button" class="btn selectorBoton" (click)="openModal()">RESERVAR</button>
                     </div>
 
                 </div>
             </div>
-        </div>
+        </ng-container>
     </div>
     
 </div>
-<app-modal-confirmacion-reserva></app-modal-confirmacion-reserva>
+<app-modal-confirmacion-reserva>
+</app-modal-confirmacion-reserva>

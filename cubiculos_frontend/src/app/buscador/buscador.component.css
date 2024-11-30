@@ -183,6 +183,9 @@
     color: white;
 }
 .horaSeleccion{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     color: aliceblue;
     background-color: rgb(108, 185, 62);
     

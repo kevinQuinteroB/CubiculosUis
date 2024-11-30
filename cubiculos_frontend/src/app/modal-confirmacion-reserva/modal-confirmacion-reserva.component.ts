@@ -17,7 +17,8 @@ export class ModalConfirmacionReservaComponent {
   }
 
   setCapacidad(capacidad: number) {
-    this.cantidadAsistentes = capacidad;
+    this.cantidadAsistentes = Number(capacidad);
+    console.log("En el modal: ",this.cantidadAsistentes)
   }
 
   close() {
