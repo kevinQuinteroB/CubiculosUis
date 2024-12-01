@@ -17,4 +17,8 @@ public interface IHorarioService {
     List<List<Horario>> consultaPrincipalHorarios(LocalDateTime fechaHoraInicio, LocalDateTime fechaHoraFin, Long capacidad);
 
     boolean validarDiponibilidadHoraria(Long idCubiculo, LocalDateTime fechaInicio, LocalDateTime fechaFin);
+
+    List<Horario> listarHorarioPorIdReserva(Long idReserva);
+
+    Horario retornarHorarioUnicoPorIdReserva(Long idReserva);
 }

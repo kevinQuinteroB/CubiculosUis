@@ -3,6 +3,7 @@ package com.entornos.cubiculos_backend.serviciosImpl;
 import com.entornos.cubiculos_backend.exepciones.ValidationException;
 import com.entornos.cubiculos_backend.modelos.Asistente;
 import com.entornos.cubiculos_backend.modelos.Cubiculo;
+import com.entornos.cubiculos_backend.modelos.Horario;
 import com.entornos.cubiculos_backend.modelos.Reserva;
 import com.entornos.cubiculos_backend.repositorios.AsistenteRepository;
 import com.entornos.cubiculos_backend.repositorios.ICubiculoRepository;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -66,6 +68,29 @@ public class ReservaServiceImpl implements IReservaService {
 
         return reservaFinal;
 
+    }
+
+
+    public List<Horario>verReservasPorIdE(Long idEstudiante){
+
+        List<Reserva> reservas=this.reservaRepository.findByEstudiante(idEstudiante);
+        if (reservas.stream().map(Reserva::getId).distinct().count() ==1){
+            return this.horarioService.listarHorarioPorIdReserva(reservas.get(0).getId());
+
+        }else{
+            List<Horario> horarios= new ArrayList<>();
+            for (Reserva re : reservas) {
+                // Obtenemos horarios asociados a cada reserva
+                List<Horario> horariosPorReserva = this.horarioService.listarHorarioPorIdReserva(re.getId());
+
+                // Filtramos horarios únicos basándonos en una propiedad única de `Horario`
+                horariosPorReserva.stream()
+                        .filter(horario -> horarios.stream().noneMatch(h -> h.getId().equals(horario.getId())))
+                        .forEach(horarios::add);
+            }
+            return horarios;
+
+        }
     }
 
     @Override

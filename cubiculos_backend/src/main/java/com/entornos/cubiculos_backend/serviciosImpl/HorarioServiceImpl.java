@@ -117,6 +117,16 @@ public class HorarioServiceImpl implements IHorarioService {
         return true;
     }
 
+    @Override
+    public List<Horario> listarHorarioPorIdReserva(Long idReserva){
+        return this.horarioRepository.buscarHorarioPorReserva(idReserva);
+    }
+
+    @Override
+    public Horario retornarHorarioUnicoPorIdReserva(Long idReserva){
+       return this.horarioRepository.buscarUnicoHorarioPorReserva(idReserva);
+    }
+
     public void vincularHorarioReserva(Long idCubiculo,Long idReserva, LocalDateTime fechaInicio, LocalDateTime fechaFin){
         fechaFin=fechaFin.plusHours(1);
         List<Horario> horarios = new ArrayList<>();

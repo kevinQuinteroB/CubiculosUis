@@ -48,5 +48,12 @@ public interface IHorarioRepository extends JpaRepository<Horario, Long> {
                                             @Param("idCubiculo") Long idCubiculo
     );
 
+    @Query("SELECT h FROM Horario h " +
+            "WHERE h.idReserva =:idReserva")
+    List<Horario>buscarHorarioPorReserva(@Param("idReserva") Long idReserva);
+
+    @Query("SELECT h FROM Horario h " +
+            "WHERE h.idReserva =:idReserva")
+    Horario buscarUnicoHorarioPorReserva(@Param("idReserva") Long idReserva);
 
 }

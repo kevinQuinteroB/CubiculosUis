@@ -2,6 +2,7 @@ package com.entornos.cubiculos_backend.controladores;
 
 import com.entornos.cubiculos_backend.exepciones.ValidationException;
 import com.entornos.cubiculos_backend.modelos.Asistente;
+import com.entornos.cubiculos_backend.modelos.Horario;
 import com.entornos.cubiculos_backend.modelos.Reserva;
 import com.entornos.cubiculos_backend.servicios.IHorarioService;
 import com.entornos.cubiculos_backend.servicios.IReservaService;
@@ -38,6 +39,12 @@ public class ReservaController {
         }
     }
 
+    @GetMapping("/listarReservaEstudiante")
+    public ResponseEntity<List<Horario>> listarReservaEstudiante(@RequestParam Long idEstudiante) {
+        if(this.reservaService.verReservasPorIdE(idEstudiante).isEmpty()) return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(this.reservaService.verReservasPorIdE(idEstudiante));
+
+    }
 
 
 
