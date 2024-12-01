@@ -38,6 +38,7 @@
   }
 
   .detallesCubiculos{
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -53,3 +54,26 @@
     margin: 0;
 }
   
+.selectorBoton{
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  width:100px;
+  background-color: rgb(108, 185, 62);
+  color: white;
+}
+.horaSeleccion{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: aliceblue;
+  background-color: rgb(108, 185, 62);
+  
+}
+.horas{
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  
+}

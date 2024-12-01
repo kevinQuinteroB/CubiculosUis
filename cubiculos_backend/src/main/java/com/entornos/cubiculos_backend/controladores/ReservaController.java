@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/reserva")
+@CrossOrigin("http://localhost:4200")
 public class ReservaController {
     private ReservaServiceImpl reservaService;
 

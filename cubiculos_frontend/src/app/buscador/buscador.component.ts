@@ -23,7 +23,9 @@ export class BuscadorComponent implements OnChanges {
   fecha: string = '';
 
   capacidadSeleccionada: number = 0;
-  consulta: Consulta[]
+  consulta: Consulta[];
+
+  cubiculoSeleccionado: any;
 
   constructor(private consultaService:ConsultaService ) {
     this.generarFechas();
@@ -121,10 +123,12 @@ export class BuscadorComponent implements OnChanges {
     });
   }
 
-  openModal() {
+  openModal(cubiculo: any) {
+    this.cubiculoSeleccionado = cubiculo;
     this.ModalConfirmacionReservaComponent.open();  // Abre el modal
     console.log("Capacidad de asistentes: ",this.capacidadSeleccionada)
     this.ModalConfirmacionReservaComponent.setCapacidad(this.capacidadSeleccionada);
+    this.ModalConfirmacionReservaComponent.setCubiculo(this.cubiculoSeleccionado)
   }
 
   buscarCubiculos() {
