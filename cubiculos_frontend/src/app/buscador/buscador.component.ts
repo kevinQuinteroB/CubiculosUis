@@ -1,8 +1,11 @@
-import { Component, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ViewChild, OnChanges, SimpleChanges, viewChild } from '@angular/core';
 import { ModalConfirmacionReservaComponent } from '../modal-confirmacion-reserva/modal-confirmacion-reserva.component';
 import { ConsultaService } from '../services/consulta.service';
 import { query } from 'express';
 import { Consulta } from '../models/consulta';
+import { ModalVerReservasComponent } from '../modal-ver-reservas/modal-ver-reservas.component';
+import { ReservaService } from '../services/reserva.service';
+import { ReservaConsulta } from '../models/reserva-consulta';
 
 @Component({
   selector: 'app-buscador',
@@ -12,6 +15,8 @@ import { Consulta } from '../models/consulta';
 export class BuscadorComponent implements OnChanges {
 
   @ViewChild(ModalConfirmacionReservaComponent) ModalConfirmacionReservaComponent!: ModalConfirmacionReservaComponent;
+  @ViewChild(ModalVerReservasComponent) ModalVerReservasComponent!: ModalVerReservasComponent;
+
 
   horas: string[] = [];
   capacidad: number[] = [];
@@ -24,10 +29,11 @@ export class BuscadorComponent implements OnChanges {
 
   capacidadSeleccionada: number = 0;
   consulta: Consulta[];
+  reservas: ReservaConsulta[];
 
   cubiculoSeleccionado: any;
 
-  constructor(private consultaService:ConsultaService ) {
+  constructor(private consultaService:ConsultaService, private reservaService: ReservaService) {
     this.generarFechas();
     this.generarCapacidad();
   }
@@ -129,6 +135,15 @@ export class BuscadorComponent implements OnChanges {
     console.log("Capacidad de asistentes: ",this.capacidadSeleccionada)
     this.ModalConfirmacionReservaComponent.setCapacidad(this.capacidadSeleccionada);
     this.ModalConfirmacionReservaComponent.setCubiculo(this.cubiculoSeleccionado)
+  }
+
+  openVerReservas(){
+    this.reservaService.listarReservas(57).subscribe( respuesta =>{
+      this.reservas = respuesta
+      this.ModalVerReservasComponent.setReservas(this.reservas);
+      this.ModalVerReservasComponent.open();
+    })
+    
   }
 
   buscarCubiculos() {

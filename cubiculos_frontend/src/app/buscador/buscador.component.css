@@ -40,6 +40,13 @@
     font-weight: 900;
 }
 
+.reservas{
+    display: flex;
+    justify-content: end;
+    text-align: end;
+    margin-right: 15px;
+}
+
 /*
     Contenido centro
 */

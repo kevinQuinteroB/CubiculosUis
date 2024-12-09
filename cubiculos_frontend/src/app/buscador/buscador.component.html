@@ -5,9 +5,16 @@
             <a class="navbar-brand" href="https://uis.edu.co/">
                 <img src="../assets/buscador/Universidad_Industrial_de_Santander_logo.svg.png" alt="Logo Uis">
             </a>
-            <h6 class="nombre">
-                NOMBRE ESTUDIANTE
-            </h6>
+            <div>
+                <h6 class="nombre">
+                    KEVIN STEVEN QUINTERO BUITRAGO
+                </h6>
+                <div class="reservas" >
+                    <button (click)="openVerReservas()">
+                        Mis reservas
+                    </button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -84,3 +91,6 @@
 </div>
 <app-modal-confirmacion-reserva>
 </app-modal-confirmacion-reserva>
+
+<app-modal-ver-reservas>
+</app-modal-ver-reservas>

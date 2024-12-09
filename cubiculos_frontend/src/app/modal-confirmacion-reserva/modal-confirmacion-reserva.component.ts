@@ -59,7 +59,7 @@ export class ModalConfirmacionReservaComponent {
       this.codigoAsistentes
     ).subscribe(Response => {
       this.reserva = Response;
-      console.log(Reserva)
+      console.log(this.reserva)
     }, error => {
       console.error("Error al confirmar reserva:", error);
     })

@@ -8,13 +8,15 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 import { BuscadorComponent } from './buscador/buscador.component';
 import { ModalConfirmacionReservaComponent } from './modal-confirmacion-reserva/modal-confirmacion-reserva.component';
 import { FormsModule } from '@angular/forms';
+import { ModalVerReservasComponent } from './modal-ver-reservas/modal-ver-reservas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PaginaInicialComponent,
     BuscadorComponent,
-    ModalConfirmacionReservaComponent
+    ModalConfirmacionReservaComponent,
+    ModalVerReservasComponent
   ],
   imports: [
     BrowserModule,

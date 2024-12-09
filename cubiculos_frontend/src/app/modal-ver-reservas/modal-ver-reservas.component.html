@@ -1,0 +1,31 @@
+<div class="modal-overlay" *ngIf="isVisible">
+    <div class="modal-content">
+      <h2>MIS RESERVAS</h2>
+      <p>Lista de reservas</p>
+  
+      <!-- Contenedor para las reservas con scroll -->
+      <div class="reserva-list">
+        <ng-container *ngFor="let reserva of reservas">
+          <div class="reserva-container">
+            <div class="reserva-item">
+              <p><strong>ID:</strong> {{ reserva.id }}</p>
+            </div>
+            <div class="reserva-item">
+              <p><strong>Fecha:</strong> {{ reserva.fecha | date:'short' }}</p>
+            </div>
+            <div class="reserva-item">
+              <p><strong>ID de Reserva:</strong> {{ reserva.idReserva }}</p>
+            </div>
+            <div class="reserva-item">
+              <p><strong>ID de Cubículo:</strong> {{ reserva.idCubiculo }}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+  
+      <div class="modal-actions">
+        <button type="button" class="btn selectorBoton" (click)="close()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+  

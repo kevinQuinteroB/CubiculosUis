@@ -1,0 +1,77 @@
+/* Contenedor para las reservas, donde se habilita el scroll */
+.reserva-list {
+  max-height: 400px; /* Puedes ajustar el valor según lo que necesites */
+  overflow-y: auto;  /* Permite el scroll vertical cuando el contenido exceda la altura */
+  margin-bottom: 20px; /* Espacio inferior entre las reservas y los botones */
+}
+
+/* Estilos generales para las reservas */
+.reserva-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reserva-item {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.reserva-item p {
+  margin: 0;
+  color: #333;
+  font-size: 16px;
+}
+
+.reserva-item strong {
+  color: rgb(108, 185, 62);
+}
+
+
+/* Estilos del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 85%;
+  text-align: center;
+}
+
+.modal-actions button {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.modal-actions button:first-child {
+  background-color: #ccc;
+}
+
+.modal-actions button:last-child {
+  background-color: rgb(108, 185, 62);
+  color: white;
+}
