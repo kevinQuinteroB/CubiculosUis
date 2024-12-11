@@ -1,9 +1,0 @@
-
-	java:S112$"FDefine and throw a dedicated exception instead of using a generic one.( βδ8ƒΡυ¶2J$0b10b3fb-32a5-476c-a815-53e84fae6af2
-
-java:S1128"URemove this unused import 'com.entornos.cubiculos_backend.servicios.IHorarioService'.(‹­ήªώÿÿÿÿ8‰Ρυ¶2J$674c43dc-c1dd-4507-b808-7738b49e3253
-
-java:S1128"URemove this unused import 'com.entornos.cubiculos_backend.servicios.IReservaService'.(Ο–η‚ϊÿÿÿÿ8‰Ρυ¶2J$db079994-7bb2-48ce-9bc5-74d6b91d61ae
-b
-java:S1128
-"@Remove this unused import 'org.springframework.http.HttpStatus'.(ν¤ϊÿÿÿÿ8Μρχ¶2
