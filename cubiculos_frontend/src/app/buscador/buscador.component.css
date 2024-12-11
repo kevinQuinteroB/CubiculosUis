@@ -207,3 +207,7 @@
     justify-content: space-between;
     margin-right: 20%;
 }
+.reservasButton{
+    background-color: transparent;
+    border: 0px solid transparent;
+}

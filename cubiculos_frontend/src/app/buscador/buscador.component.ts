@@ -78,7 +78,7 @@ export class BuscadorComponent implements OnChanges {
       
     }else{
       this.horas = [];
-      for (let i = 6; i <= 18; i++) {
+      for (let i = 8; i <= 18; i++) {
         const hora = `${i.toString().padStart(2, '0')}:00`;
         this.horas.push(hora);
       }
@@ -87,7 +87,7 @@ export class BuscadorComponent implements OnChanges {
 
   generarFechas() {
     const hoy = new Date();
-    for (let i = 0; i <= 5; i++) {
+    for (let i = 0; i <= 2; i++) {
       const fecha = new Date(hoy);
       fecha.setDate(hoy.getDate() + i);
       this.fechas.push(fecha.toLocaleDateString());
