@@ -8,7 +8,7 @@ import { Consulta } from '../models/consulta';
 })
 export class ConsultaService {
 
-  private apiUrl: string = "http://localhost:8080/horario";
+  private apiUrl: string = "http://localhost:8082/service/horario";
   
   constructor(private http: HttpClient) { }
 
