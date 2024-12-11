@@ -1,6 +1,6 @@
 package LMC.auth.services;
 
-import LMC.auth.models.Profile;
+import LMC.auth.models.Estudiante;
 import LMC.auth.repositories.ProfileRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,13 +14,13 @@ public class ProfileService {
         profileRepository.deleteById(profileId);
     }
 
-    public Profile getProfile(Long profileId) {
+    public Estudiante getProfile(Long profileId) {
         return profileRepository.findById(profileId)
                 .orElseThrow(() -> new IllegalArgumentException("Profile does not exist"));
     }
 
-    public Profile saveProfile(Profile profile) {
-        return profileRepository.save(profile);
+    public Estudiante saveProfile(Estudiante estudiante) {
+        return profileRepository.save(estudiante);
     }
 
 

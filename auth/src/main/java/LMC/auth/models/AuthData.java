@@ -12,7 +12,7 @@ import lombok.*;
 @NoArgsConstructor
 public class AuthData {
     @Id
-    @Column(name = "profile_id")
+    @Column(name = "estudiante_id")
     private long id;
 
     @Column(name = "username", unique = true, nullable = false)
@@ -26,8 +26,8 @@ public class AuthData {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "profile_id")
-    private Profile profile;
+    @JoinColumn(name = "estudiante_id")
+    private Estudiante estudiante;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")

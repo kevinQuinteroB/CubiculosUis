@@ -14,6 +14,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "estudiante")
 public class Estudiante {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
@@ -21,6 +22,9 @@ public class Estudiante {
 
     @Column(name="nombre")
     private String nombre;
+
+    @Column(name = "email", nullable = false)
+    private String email;
 
     @Column(name = "codigo")
     private int codigo;
@@ -32,6 +36,8 @@ public class Estudiante {
     @Column(name = "horas_disp", nullable = false, columnDefinition = "integer default 2")
     private int horasDisp = 2;
 
+    @Column(name = "phone", nullable = false)
+    private String phone;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

@@ -5,7 +5,7 @@ import LMC.auth.dto.LoginRequest;
 import LMC.auth.dto.RegisterRequest;
 import LMC.auth.dto.ValidateDTO;
 import LMC.auth.models.AuthData;
-import LMC.auth.models.Profile;
+import LMC.auth.models.Estudiante;
 import LMC.auth.models.Role;
 import LMC.auth.models.SecurityUser;
 import LMC.auth.repositories.AuthDataRepository;
@@ -50,7 +50,7 @@ public class AuthService {
 
         return AuthResponse.builder()
                 .token(token)
-                .profile(authData.getProfile())
+                .estudiante(authData.getEstudiante())
                 .role(authData.getRole().getName())
                 .build();
     }
@@ -106,8 +106,8 @@ public class AuthService {
         }
 
         // Crear y guardar el Profile
-        Profile profile = Profile.builder().name(request.getName())
-                .email(request.getEmail()).phone(request.getPhone()).build();
+        Estudiante estudiante = Estudiante.builder().name(request.getName())
+                .email(request.getEmail()).phone(request.getPhone()).idEstado(1).codigo(Integer.parseInt(request.getUsername())).build();
 
         // Buscar el rol por defecto (asumiendo que existe un rol 'USER')
         Role defaultRole = roleRepository.findByName("USER")
@@ -116,17 +116,17 @@ public class AuthService {
         // Crear AuthData
         AuthData authData = AuthData.builder().username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .profile(profile).role(defaultRole).enabled(true).build();
+                .estudiante(estudiante).role(defaultRole).enabled(true).build();
 
-        profile.setAuthData(authData);
-        profileRepository.save(profile);
+        estudiante.setAuthData(authData);
+        profileRepository.save(estudiante);
 
         SecurityUser securityUser = new SecurityUser(authData);
         String token = jwtService.getToken(securityUser);
 
         return AuthResponse.builder()
                 .token(token)
-                .profile(authData.getProfile())
+                .estudiante(authData.getEstudiante())
                 .role(authData.getRole().getName())
                 .build();
     }

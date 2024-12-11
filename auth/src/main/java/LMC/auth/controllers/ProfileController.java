@@ -1,6 +1,6 @@
 package LMC.auth.controllers;
 
-import LMC.auth.models.Profile;
+import LMC.auth.models.Estudiante;
 import LMC.auth.services.ProfileService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ public class ProfileController {
     private final ProfileService profileService;
 
     @GetMapping()
-    public ResponseEntity<Profile> getProfile(@RequestHeader Long id) {
+    public ResponseEntity<Estudiante> getProfile(@RequestHeader Long id) {
         return ResponseEntity.ok(profileService.getProfile(id));
     }
 }

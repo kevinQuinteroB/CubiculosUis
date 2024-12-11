@@ -35,8 +35,8 @@ public class SecurityUser implements UserDetails {
         return authData.isEnabled();
     }
 
-    public Profile getProfile() {
-        return authData.getProfile();
+    public Estudiante getProfile() {
+        return authData.getEstudiante();
     }
 
     public Long getId() {

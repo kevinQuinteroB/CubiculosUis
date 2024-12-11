@@ -24,7 +24,7 @@ public class ReservaController {
 
     @PostMapping("/confirmar")
     public ResponseEntity<Reserva> confirmarReserva(@RequestParam Long idCubiculo,
-                                                    @RequestParam Long idEstudiante,
+                                                    @RequestHeader("X-User-ID") Long idEstudiante,
                                                     @RequestParam LocalDateTime fechaHoraInicio,
                                                     @RequestParam LocalDateTime fechaHoraFin,
                                                     @RequestBody List<Asistente> asistentes ) {
@@ -40,7 +40,7 @@ public class ReservaController {
     }
 
     @GetMapping("/listarReservaEstudiante")
-    public ResponseEntity<List<Horario>> listarReservaEstudiante(@RequestParam Long idEstudiante) {
+    public ResponseEntity<List<Horario>> listarReservaEstudiante(@RequestHeader("X-User-ID") Long idEstudiante) {
         if(this.reservaService.verReservasPorIdE(idEstudiante).isEmpty()) return ResponseEntity.noContent().build();
         return ResponseEntity.ok(this.reservaService.verReservasPorIdE(idEstudiante));
 
