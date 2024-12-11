@@ -1,0 +1,121 @@
+
+.body {
+    background-image: url('/assets/login/REPOSITORIO-1536x864.jpg');
+    background-size: cover; 
+    height: 100vh;
+    width: 100vw; 
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    margin: 30px 25px 0 25px;
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 50px;
+    color: aliceblue;
+}
+
+h4{
+    margin: 0px 25px 0px 25px;
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    color: aliceblue;
+}
+
+.fondo {
+    display: flex;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(85, 166, 22,0.5);
+    background-size: cover;
+    background-position: center; /* Opcional: centra la imagen */
+}
+
+.logoUIS{
+    position: absolute;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-top: 5px;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+
+.logoUIS:hover{
+    transform: scale(105%);
+}
+
+.caja-registro{
+    display: flex;
+    position: relative;
+    margin: auto auto;
+    height: 380px;
+    width: 300px;
+    background-color: #006837;
+    border-radius: 5%;
+    flex-direction: column;
+}
+
+.ingresarInformacion{
+    display: flex;
+    position: relative;
+    width: calc(100% - 50px);
+    margin: 15px 25px;
+    height: 35px;
+}
+
+.ingresarInformacion:focus{
+    outline: 2px solid #ffffff;
+    outline-offset: 2px; 
+    border: 0;
+}
+
+.botones{
+    display: flex;
+    position: relative;
+    width: calc(100% - 50px);
+    margin: 0px 25px;
+    height: 35px;
+    background-color: #6dc667;
+    border-radius: 0;
+    color: aliceblue;
+    justify-content: center;
+    font-family: 'Source Sans 3';
+    font-weight: 600;
+}
+
+.botones:focus{
+    outline: 3px solid #6dc667;
+    outline-offset: 1px; 
+    border: 0;
+}
+
+.recuperarContrasena{
+    margin: 7px 25px 7px 25px;
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14px;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+.botones:active{
+    background-color: rgb(198, 226, 172);
+    color: #006837;
+}
+
+@media (max-height: 800) {
+    .caja-registro{
+        height: 250px;
+        width: 150px;
+    }
+}
+    
+
+

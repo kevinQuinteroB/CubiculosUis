@@ -1,0 +1,56 @@
+<div class="modal-overlay" *ngIf="isVisible">
+  <div class="modal-content">
+    <h2>CONFIRMA TU RESERVA</h2>
+    <p>Lista de asistentes</p>
+
+    <div *ngFor="let _ of [].constructor(cantidadAsistentes); let i = index" class="input-group mb-3">
+      <input type="number" class="form-control" placeholder="codigo" aria-label="codigo" [(ngModel)]="asistentes[i].codigo"> 
+      <span class="input-group-text">-</span>
+      <input type="text" class="form-control" placeholder="nombre" aria-label="nombre" [(ngModel)]="asistentes[i].nombre">
+    </div>
+
+    <p>Detalles</p>
+
+    <h4 class="tituloCubiculo">Cubículo {{cubiculo.idCubiculo}}</h4>
+
+    <div class="infoCapacidad">
+      <span class="CapacidadCubiculo">Capacidad maxima:</span><span class="detalles"> {{cubiculo.capacidad}}
+        personas</span>
+    </div>
+    <div class="horas">
+      <div class="selectorBoton" style="margin-right: 15px;">
+        <div class="horaSeleccion">
+          {{formatHora(cubiculo.fechaHoraInicio)}}
+        </div>
+      </div>
+      <div class="selectorBoton" style="margin-left: 15px;">
+        <div class=" horaSeleccion">
+          {{formatHora(cubiculo.fechaHoraFin)}}
+        </div>
+      </div>
+    </div>
+    
+    <div class="detallesCubiculos">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="terminos" [(ngModel)]="terminosAceptados">
+        <label class="form-check-label" for="terminos">
+          Terminos y condiciones
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="compromiso" [(ngModel)]="compromisoAceptado">
+        <label class="form-check-label" for="compromiso">
+          Me comprometo a cumplir las normas y guardar la integridad de todo el material brindado por la universidad
+        </label>
+      </div>
+    </div>
+
+
+    <div class="modal-actions">
+      <button type="button" class="btn selectorBoton" (click)="close()">Cancelar</button>
+      <button type="button" class="btn selectorBoton" style="width: max-content;" (click)="confirm()" [disabled]="!isFormValid()">Confirmar Reserva</button>
+    </div>
+
+  </div>
+</div>

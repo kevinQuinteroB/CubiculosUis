@@ -1,0 +1,44 @@
+spring:
+  config:
+    import: optional:data-inicializer.yml
+  application:
+    name: auth-service
+  datasource:
+    url: jdbc:postgresql://manny.db.elephantsql.com:5432/qdacjzau
+    username: qdacjzau
+    password: zZS2Gns-gd1Rvfcb6UvDqt5JYzaNW_Uf
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    #show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+  cloud:
+    loadbalancer:
+      enabled: true
+
+logging:
+  level:
+    org:
+      root: info
+      springframework.security: warn
+      hibernate: error
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 8093
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain
+    min-response-size: 1024

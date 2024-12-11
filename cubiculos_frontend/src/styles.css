@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Hum521c';
+    src: url('assets/fonts/Hum521c.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'Hum521l';
+    src: url('assets/fonts/Hum521l.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hum521ub';
+    src: url('assets/fonts/Hum521ub.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hum521xb';
+    src: url('assets/fonts/Hum521xb.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hum521l2';
+    src: url('assets/fonts/HUM521I.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hum521LI';
+    src: url('assets/fonts/HUM521LI.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Hum521N';
+    src: url('assets/fonts/HUM521N.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

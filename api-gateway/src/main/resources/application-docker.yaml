@@ -1,0 +1,78 @@
+spring:
+  cache:
+    type: caffeine
+  application:
+    name: api-gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: cubiculos-service
+          uri: lb://CUBICULOS-SERVICE
+          predicates:
+            - Path=/service/**
+          filters:
+            - name: AuthenticationFilter
+              args:
+                roles:
+                  - ROLE_USER
+                  - ROLE_ADMIN
+                  - ROLE_MANAGER
+                  - ROLE_SYSTEM
+          metadata:
+            public: true
+        - id: category-service
+          uri: lb://ITEM-SERVICE
+          predicates:
+            - Path=/api/v1/category/**
+          filters:
+            - name: AuthenticationFilter
+              args:
+                roles:
+                  - ROLE_USER
+                  - ROLE_ADMIN
+                  - ROLE_MANAGER
+                  - ROLE_SYSTEM
+          metadata:
+            public: true
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/v1/auth/**
+          metadata:
+            public: true
+        - id: profile-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/v1/profile/**
+          metadata:
+            public: false
+
+  data:
+    redis:
+      host: ${REDIS_HOST:redis}
+      port: ${REDIS_PORT:6379}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://eureka-server:8761/eureka/}
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: WARN
+    org.springframework.cloud.gateway: ERROR
+
+server:
+  port: ${SERVER_PORT:8080}
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/plain
+    min-response-size: 1024

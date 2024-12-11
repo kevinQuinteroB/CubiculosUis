@@ -1,0 +1,20 @@
+
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§–Ñ8‹Ë£„·2J$4ac681f9-fd50-4fb3-95f6-9cc9277160cd
+r
+java:S10664"/Merge this if statement with the enclosing one.(ÍÎçô8ŒË£„·2J$35c537f8-0ff0-4f92-b0b1-35fa7445d099
+
+java:S26297"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(ÈØ‡X8‘Ë£„·2J$50f333b8-47b5-4900-9278-5f37382350da
+
+java:S2629<"7Use the built-in formatting to construct this argument.(¸ª‰ÿÿÿÿÿ8‘Ë£„·2J$cc66d84e-6bd3-4d96-b102-035e6745f8cd
+i
+java:S1170"!Make this final field static too.(¡’ø½úÿÿÿÿ8•Ë£„·2J$bd3f58a5-a85e-42e3-8129-199db2d9c129
+i
+java:S1170"!Make this final field static too.(…±ğ™øÿÿÿÿ8•Ë£„·2J$730b6d60-b5b7-428c-ab1b-3c05b5ac8944
+„
+java:S1854j"<Remove this useless assignment to local variable "horarios".(ùùÆ¶ûÿÿÿÿ8¥Ë£„·2J$33faa032-83f9-411f-94bd-a76d2b5c9c30
+„
+java:S1126r"AReplace this if-then-else statement by a single return statement.(ÇËöÎ8ö¿¥„·2J$93de93fe-4952-4f29-bfed-fb57a5d2c28d
+
+java:S1155r">Use isEmpty() to check whether the collection is empty or not.(ÇËöÎ8÷¿¥„·2J$7c38bc20-f33f-46d1-8822-d640221e2824
+„
+java:S1854z"<Remove this useless assignment to local variable "horarios".(ùùÆ¶ûÿÿÿÿ8§Ë£„·2J$ce3f44ff-b715-4dc2-9a53-61c50eafbc67
