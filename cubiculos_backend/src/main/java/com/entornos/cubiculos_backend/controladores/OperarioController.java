@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/operario")
 public class OperarioController {
     @Autowired

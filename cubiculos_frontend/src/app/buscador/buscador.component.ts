@@ -6,6 +6,7 @@ import { Consulta } from '../models/consulta';
 import { ModalVerReservasComponent } from '../modal-ver-reservas/modal-ver-reservas.component';
 import { ReservaService } from '../services/reserva.service';
 import { ReservaConsulta } from '../models/reserva-consulta';
+import { environment } from '../enviroments/enviroment';
 
 @Component({
   selector: 'app-buscador',
@@ -16,8 +17,8 @@ export class BuscadorComponent implements OnChanges {
 
   @ViewChild(ModalConfirmacionReservaComponent) ModalConfirmacionReservaComponent!: ModalConfirmacionReservaComponent;
   @ViewChild(ModalVerReservasComponent) ModalVerReservasComponent!: ModalVerReservasComponent;
-
-
+ 
+  nombre: string | null = null;
   horas: string[] = [];
   capacidad: number[] = [];
   fechas: string[] = [];
@@ -42,6 +43,8 @@ export class BuscadorComponent implements OnChanges {
     this.fecha = ''
     this.generarHoras();
     console.log("Pag iniciada");
+    const storedNombre = localStorage.getItem("nombre");
+    this.nombre = storedNombre ? storedNombre : '';
   }
 
   ngOnChanges(changes: SimpleChanges): void {

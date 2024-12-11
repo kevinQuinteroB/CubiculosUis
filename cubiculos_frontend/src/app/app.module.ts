@@ -9,6 +9,7 @@ import { BuscadorComponent } from './buscador/buscador.component';
 import { ModalConfirmacionReservaComponent } from './modal-confirmacion-reserva/modal-confirmacion-reserva.component';
 import { FormsModule } from '@angular/forms';
 import { ModalVerReservasComponent } from './modal-ver-reservas/modal-ver-reservas.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ModalVerReservasComponent } from './modal-ver-reservas/modal-ver-reserv
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [
     provideClientHydration(),

@@ -7,11 +7,11 @@
         <div class="caja-registro">
             <h2 class="user-select-none">Bienveidos</h2>
             <h4 class="user-select-none">Cubiculos UIS</h4>
-            <form>
-                <input class="ingresarInformacion" type="email">
-                <input class="ingresarInformacion" type="password">
+            <form >
+                <input class="ingresarInformacion" [(ngModel)]="credentials.username" name="username" >
+                <input class="ingresarInformacion" [(ngModel)]="credentials.password" name="password" >
             </form>
-            <button class="botones btn" [routerLink]="['/piso']">Ingresar</button>
+            <button class="botones btn" type="submit" (click)="login()">Ingresar</button>
             <a class="recuperarContrasena" href="https://www.google.com">Olvidates la contraseña</a>
             <button class="botones btn">Biblioteca UIS</button>
         </div>
